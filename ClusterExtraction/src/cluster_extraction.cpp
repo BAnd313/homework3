@@ -13,7 +13,7 @@
 
 int main(int argc, char **argv)
 {
-  if (argc == 3)
+  if (argc == 3 || argc == 2)
   {
     // Read in the cloud data
     pcl::PCDReader reader;
@@ -75,7 +75,11 @@ int main(int argc, char **argv)
 
     std::vector<pcl::PointIndices> cluster_indices;
     pcl::EuclideanClusterExtraction<pcl::PointXYZ> ec;
-    ec.setClusterTolerance(std::stod(argv[2]));
+
+    if(argc == 3)
+        ec.setClusterTolerance((float)std::atof(argv[2]));
+    else
+        ec.setClusterTolerance(0.28);
     ec.setMinClusterSize(50);
     ec.setMaxClusterSize(50000);
     ec.setSearchMethod(tree);
@@ -102,7 +106,7 @@ int main(int argc, char **argv)
   else
   {
     std::cout << "Usage:\n";
-    std::cout << "cluster_extract [FILE].pcd\n";
+    std::cout << "cluster_extract <FILE.pcd> [tolerance_value]\n";
   }
 
   return (0);
