@@ -106,7 +106,7 @@ int main(int argc, char **argv)
   else
   {
     std::cout << "Usage:\n";
-    std::cout << "cluster_extract <FILE.pcd> [tolerance_value]\n";
+    std::cout << "cluster_extraction <FILE.pcd> [tolerance_value]\n";
   }
 
   return (0);
