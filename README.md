@@ -27,7 +27,7 @@ In aggiunta alla versione modificata di ORB_SLAM2 c'è un programma (ClusterExtr
 
 ## Compilazione
 
-Le dipendenze sono le medesime del software ORB_SLAM2, si possono trovare sulla [pagina git](https://github.com/raulmur/ORB_SLAM2#2-prerequisites) corrispondente. Assicurarsi di averle installate prima di procedere.
+Il tutto è stato testato su `Ubuntu 16.04`. Le dipendenze sono le medesime del software ORB_SLAM2, si possono trovare sulla [pagina git](https://github.com/raulmur/ORB_SLAM2#2-prerequisites) corrispondente. Assicurarsi di averle installate prima di procedere.
 
 Fatto ciò, è sufficiente aprire un terminale, posizionarsi nella cartella `homework3` e lanciare lo script `build.sh`
 
