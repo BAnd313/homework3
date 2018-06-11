@@ -54,10 +54,16 @@ rosbag play --pause V1_01_easy.bag /cam0/image_raw:=/camera/left/image_raw /cam1
 Dal terminale 3 premere `SPAZIO` per avviare la bag e terminata l'esecuzione premere `Ctrl + C` sul terminale 2.
 Verrà salvata la point cloud in `ORB_SLAM2_rev/pointcloud.pcd`
 
-Per verificare il corretto salvataggio del file, utilizzare il seguente comando:
+![Execution](media/ORB_SLAM2.png)
+
+Per verificare il corretto salvataggio del file e vedere graficamente la point cloud, utilizzare il seguente comando:
 ```
 pcl_viewer pointcloud.pcd
 ```
+
+![Pointcloud](media/pointcloud.png)
+
+![Pointcloud3D](media/1.gif)
 
 ## Esecuzione ClusterExtraction
 
@@ -76,7 +82,18 @@ pcl_viewer cloud_cluster_*
 ```
 
 ## Screenshots
-TODO
+
+Cluster Euclideo con tolleranza 0.28
+
+![Cluster_tolerance_0.28](media/cluster0.28.png)
+
+![Cluster_tolerance_0.28_3D](media/2.gif)
+
+Cluster Euclideo con tolleranza 0.40
+
+![Cluster_tolerance_0.40](media/cluster0.40.png)
+
+![Cluster_tolerance_0.40_3D](media/3.gif)
 
 ## Autori
 
