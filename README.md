@@ -81,6 +81,8 @@ Terminata l'esecuzione verranno generati diversi cluster. Per visualizzarli graf
 pcl_viewer cloud_cluster_*
 ```
 
+**ATTENZIONE**: prima di avviare nuovamente `cluster_extraction` con un valore di tolleranza diverso dal precedente, è consigliato eliminare tutti i file `cloud_cluster_*` così da avere poi solamente quelli generati dall'ultimo comando.
+
 ## Screenshots
 
 Cluster Euclideo con tolleranza 0.28
