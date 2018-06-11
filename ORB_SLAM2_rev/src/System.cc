@@ -119,7 +119,7 @@ cv::Mat System::TrackStereo(const cv::Mat &imLeft, const cv::Mat &imRight, const
     {
         cerr << "ERROR: you called TrackStereo but input sensor was not set to STEREO." << endl;
         exit(-1);
-    }   
+    }
 
     // Check mode change
     {
@@ -170,7 +170,7 @@ cv::Mat System::TrackRGBD(const cv::Mat &im, const cv::Mat &depthmap, const doub
     {
         cerr << "ERROR: you called TrackRGBD but input sensor was not set to RGBD." << endl;
         exit(-1);
-    }    
+    }
 
     // Check mode change
     {
@@ -315,8 +315,8 @@ void System::Shutdown()
         usleep(5000);
     }
 
-    if(mpViewer)
-        pangolin::BindToContext("ORB-SLAM2: Map Viewer");
+    //if(mpViewer)
+    //    pangolin::BindToContext("ORB-SLAM2: Map Viewer");
 }
 
 void System::SaveTrajectoryTUM(const string &filename)
@@ -470,6 +470,42 @@ void System::SaveTrajectoryKITTI(const string &filename)
     f.close();
     cout << endl << "trajectory saved!" << endl;
 }
+
+// this function saves the point cloud in a file
+void System::SavePCD(const string &filename)
+{
+    cout << endl << "Saving point cloud in " << filename << " ..." << endl;
+    // get all points of the map
+    vector<MapPoint*> points = mpMap->GetAllMapPoints();
+
+
+    // Compose the PCD file with header
+    std::string strPerPcl = std::string("# .PCD v.7 - Point Cloud Data file format\nVERSION .7\n");
+    strPerPcl += "FIELDS x y z\nSIZE 4 4 4\nTYPE F F F\nCOUNT 1 1 1\nWIDTH " + std::to_string(points.size()) + "\nHEIGHT 1\nVIEWPOINT 0 0 0 1 0 0 0\nPOINTS " + std::to_string(points.size()) + "\nDATA ascii\n";
+
+    // Open and write the file
+    ofstream f;
+    f.open(filename.c_str());
+    f << strPerPcl;
+
+    // Get position of all single points
+    for (auto& elem: points){
+        auto i = &elem - &points[0];
+        MapPoint* thisMapPoint = points[i];
+
+        if(thisMapPoint->isBad())
+           continue;
+
+        cv::Mat positionOfMapPoint = thisMapPoint->GetWorldPos();
+        // setprecision() sets the decimal precision to be used to format floating-point values on output operations.
+        f << setprecision(9) << positionOfMapPoint.at<float>(0) << " " << positionOfMapPoint.at<float>(1) << " " << positionOfMapPoint.at<float>(2) << endl;
+
+    }
+
+    f.close();
+    cout << endl << "point cloud saved!" << endl;
+}
+
 
 int System::GetTrackingState()
 {
