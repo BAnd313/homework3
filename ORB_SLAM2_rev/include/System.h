@@ -25,6 +25,7 @@
 #include<string>
 #include<thread>
 #include<opencv2/core/core.hpp>
+#include<unistd.h>
 
 #include "Tracking.h"
 #include "FrameDrawer.h"
@@ -113,8 +114,11 @@ public:
     void SaveTrajectoryKITTI(const string &filename);
 
     // TODO: Save/Load functions
-    // SaveMap(const string &filename);
+    // SaveMap(const string &filename);  (function SavePCD(...))
     // LoadMap(const string &filename);
+
+    // Save point cloud in a file
+    void SavePCD(const string &filename);
 
     // Information from most recent processed frame
     // You can call this right after TrackMonocular (or stereo or RGBD)
