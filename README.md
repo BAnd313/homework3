@@ -15,7 +15,7 @@ Homework 3 è composto da 4 parti:
 ## Cosa cambia?
 
 Questo progetto contiene una versione modificata del programma ORB_SLAM2 (https://github.com/raulmur/ORB_SLAM2). La modifica comporta il salvataggio di una point cloud in un file `pointcloud.pcd` durante la chiusura del programma. I file modificati sono:
-* `src/System.cc` aggiunta la funzione SavePCD(...) che effettua il salvataggio della point cloud su file, commentate 2 righe di codice che mandavano il programma in deadlock
+* `src/System.cc` aggiunta la funzione `SavePCD(...)` che effettua il salvataggio della point cloud su file, commentate 2 righe di codice che mandavano il programma in deadlock
 * `include/System.h` aggiunta la dichiarazione della funzione sopra descritta
 * `Examples/ROS/ORB_SLAM2/src/ros_stereo.cc` aggiunto il richiamo della funzione sopra descritta poco prima della chiusura del programma
 
@@ -28,6 +28,7 @@ In aggiunta alla versione modificata di ORB_SLAM2 c'è un programma (ClusterExtr
 ## Compilazione
 
 Le dipendenze sono le medesime del software ORB_SLAM2, si possono trovare sulla [pagina git](https://github.com/raulmur/ORB_SLAM2#2-prerequisites) corrispondente. Assicurarsi di averle installate prima di procedere.
+
 Fatto ciò, è sufficiente aprire un terminale, posizionarsi nella cartella `homework3` e lanciare lo script `build.sh`
 
 ## Esecuzione ORB_SLAM2
